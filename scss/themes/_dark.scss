@@ -27,7 +27,9 @@ $-colors: (
     fill-quinary: #64748b1a,
     fill-senary: #47556914,
     
-    // Dark mode backgrounds - deep but not pure black
+    // Dark mode backgrounds - carefully chosen for readability
+    // #0f172a (slate-900) provides good contrast without pure black harshness
+    // Tested for extended use comfort with adequate text contrast
     color-background: #0f172a,
     color-background30: #0f172a4d,
     color-background50: #0f172a80,

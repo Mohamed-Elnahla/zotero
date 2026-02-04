@@ -81,7 +81,7 @@
 		.row {
 			border-radius: $border-radius-base; // Modern rounded corners
 			transition: all $transition-fast ease;
-			margin-bottom: 2px; // Spacing between rows for card effect
+			margin-bottom: $space-min; // Spacing between rows for card effect
 			
 			&:hover:not(.selected) {
 				background-color: var(--color-sidepane);

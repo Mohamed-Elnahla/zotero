@@ -32,11 +32,11 @@ input {
 			appearance: none;
 		}
 		border-radius: $border-radius-base;
-		padding: .4em .6em;
+		padding: $space-xs $space-sm; // Using spacing variables
 		border: 1px solid var(--color-border);
 		
 		&[type="button"] {
-			padding: .4em 1.5em;
+			padding: $space-xs $space-lg; // Using spacing variables
 		}
 	}
 }
