@@ -4,8 +4,10 @@ item-pane-header {
 	}
 	flex-direction: column;
 	align-items: stretch;
-	padding: 8px;
-	border-bottom: 1px solid var(--fill-quinary);
+	padding: $space-sm; // Modern spacing
+	border-bottom: 1px solid var(--color-border);
+	background: var(--color-background);
+	box-shadow: $shadow-xs; // Add subtle depth
 	
 	min-height: 41px;
 	max-height: 25%;
@@ -19,11 +21,11 @@ item-pane-header {
 		justify-content: space-between;
 
 		@include compact {
-			gap: 4px;
+			gap: $space-xs;
 		}
 
 		@include comfortable {
-			gap: 8px;
+			gap: $space-sm;
 		}
 
 		.title-head {
@@ -33,7 +35,8 @@ item-pane-header {
 				margin-top: calc(0px - var(--editable-text-padding-block));
 				flex: 1 1 0;
 				font-weight: 600;
-				line-height: 1.333;
+				line-height: 1.4; // Better readability
+				color: var(--fill-primary);
 				
 				editable-text {
 					flex: 1;
@@ -42,13 +45,14 @@ item-pane-header {
 			
 			.creator-year {
 				color: var(--fill-secondary);
+				font-size: 0.9em;
 			}
 			
 			.bib-entry {
-				line-height: 1.5;
+				line-height: 1.6; // More spacious
 				
 				&.loading {
-					color: var(--fill-secondary);
+					color: var(--fill-tertiary);
 				}
 			}
 			

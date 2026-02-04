@@ -1,11 +1,15 @@
+// Modern window styling
 @mixin zotero-window {
-	background: var(--material-sidepane);
-	--color-form-element-base-background: var(--material-sidepane);
+	background: var(--color-sidepane);
+	--color-form-element-base-background: var(--color-sidepane);
 }
 
+// Modern dialog styling with cleaner background
 @mixin zotero-dialog {
-	background: var(--material-background);
-	--color-form-element-base-background: var(--material-background);
+	background: var(--color-background);
+	--color-form-element-base-background: var(--color-background);
+	border-radius: $border-radius-medium;
+	box-shadow: $shadow-xl; // Add depth to dialogs
 }
 
 window:root,
@@ -27,12 +31,13 @@ window:root .zotero-dialog {
 	@include zotero-dialog();
 }
 
-// Dialogs (e.g. the integration doc prefs window) has 20px padding on MacOS
+// Dialogs (e.g. the integration doc prefs window) has padding with modern spacing
 window:root dialog.zotero-dialog-window {
 	@include zotero-window();
 
 	@media (-moz-platform: macos) {
-		padding: 20px;
+		padding: $space-lg; // Modern spacing
+		border-radius: $border-radius-medium;
 	}
 }
 

@@ -1,9 +1,12 @@
+// Modern toolbar design inspired by EndNote 25
 .toolbar {
 	height: $height-toolbar !important; /* Hard-code this to fix toolbar icon compression on Linux */
 	min-height: $height-toolbar; /* Needed to prevent squashing by stretched tag selector */
 	margin: 0;
-	padding: 0px 8px 0px 8px;
+	padding: 0px 12px 0px 12px; // Increased padding for modern spacing
 	min-width: 1px;
+	background: var(--color-toolbar);
+	border-bottom: 1px solid var(--color-border);
 }
 
 :root:-moz-locale-dir(rtl) {
@@ -25,8 +28,9 @@
 }
 
 #zotero-layout-switcher .zotero-toolbar {
-	background: var(--material-toolbar);
-	border-bottom: var(--material-panedivider);
+	background: var(--color-toolbar);
+	border-bottom: 1px solid var(--color-border);
+	box-shadow: $shadow-xs; // Add subtle shadow for depth
 }
 
 #zotero-collections-toolbar,
@@ -34,13 +38,20 @@
 #zotero-item-pane-header,
 #zotero-tabs-toolbar {
 	toolbarbutton {
-		width: 28px;
-		height: 28px;
-		padding: 0px 4px 0px 4px;
+		width: 32px; // Slightly larger for modern look
+		height: 32px;
+		padding: 0px 6px 0px 6px;
+		border-radius: $border-radius-base; // Rounded corners
+		transition: all $transition-fast ease;
+
+		&:hover:not([disabled]) {
+			background: var(--color-sidepane);
+			box-shadow: $shadow-xs;
+		}
 
 		&[type="menu"] {
 			min-width: 0;
-			width: 40px;
+			width: 44px; // Slightly larger
 		}
 	}
 }

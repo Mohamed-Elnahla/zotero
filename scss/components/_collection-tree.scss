@@ -31,7 +31,9 @@ $icons: (
 	width: $min-width-collections-pane;
 	flex-grow: 0;
 	flex-shrink: 1;
-	background: var(--material-sidepane);
+	background: var(--color-sidepane);
+	border-right: 1px solid var(--color-border);
+	box-shadow: $shadow-sm; // Add depth
 }
 
 #zotero-collections-tree-container {

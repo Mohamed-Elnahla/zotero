@@ -5,11 +5,12 @@ item-pane-sidenav {
 		display: flex;
 	}
 	flex-direction: column;
-	border-inline-start: var(--material-panedivider);
-	padding: 6px 4px 0;
+	border-inline-start: 1px solid var(--color-border);
+	padding: $space-xs $space-min 0;
 	align-items: center;
-	gap: 6px;
-	background: var(--material-sidepane);
+	gap: $space-xs;
+	background: var(--color-sidepane);
+	box-shadow: $shadow-sm; // Add depth
 	position: relative; // Stop item pane content from overlapping
 	width: $width-sidenav;
 	height: auto;
@@ -19,10 +20,10 @@ item-pane-sidenav {
 		height: $width-sidenav;
 		flex-direction: row;
 		border-inline-start: none;
-		border-top: var(--material-panedivider);
-		padding-inline-start: 6px;
+		border-top: 1px solid var(--color-border);
+		padding-inline-start: $space-xs;
 		padding-inline-end: 0;
-		padding-block: 4px;
+		padding-block: $space-min;
 	}
 
 	.inherit-flex {
@@ -35,8 +36,9 @@ item-pane-sidenav {
 	}
 	
 	.highlight {
-		border-radius: 5px;
-		background-color: var(--fill-quinary);
+		border-radius: $border-radius-base;
+		background-color: var(--accent-blue10);
+		box-shadow: $shadow-xs;
 	}
 
 	.pin-wrapper {
@@ -53,6 +55,7 @@ item-pane-sidenav {
 			width: 12px;
 			height: 12px;
 			border-radius: 50%;
+			box-shadow: $shadow-xs;
 		}
 
 		&.pinnable {
@@ -66,31 +69,34 @@ item-pane-sidenav {
 	}
 
 	.btn {
-		// TODO: Extract button styles?
-		
-		width: 28px;
-		height: 28px;
+		// Modern button styling for sidenav
+		width: 32px; // Slightly larger
+		height: 32px;
 		margin: 0;
-		padding: 4px;
+		padding: $space-xs;
 		pointer-events: all;
 		background-repeat: no-repeat;
 		background-position: center;
 		-moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
-		border-radius: 5px;
+		border-radius: $border-radius-base; // Modern radius
 		box-sizing: border-box;
+		transition: all $transition-fast ease;
 
 		&:disabled,
 		&[disabled="true"] {
-			opacity: 60%;
+			opacity: 50%;
 			pointer-events: none;
 		}
 
 		&:hover {
-			background-color: var(--fill-quinary);
+			background-color: var(--color-background);
+			box-shadow: $shadow-sm;
+			transform: scale(1.05);
 		}
 
 		&:active {
-			background-color: var(--fill-quarternary);
+			background-color: var(--accent-blue10);
+			transform: scale(0.98);
 		}
 		
 		@each $pane, $color in $item-pane-sections {

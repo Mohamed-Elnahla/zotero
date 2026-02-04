@@ -1,6 +1,8 @@
 :is(panel) {
 	&::part(content) {
-		--panel-background: var(--material-toolbar);
+		--panel-background: var(--color-toolbar);
+		border-radius: $border-radius-medium; // Modern rounded corners
+		box-shadow: $shadow-md; // Depth with shadow
 	}
 
 	&#autoscroller {
@@ -13,6 +15,7 @@
 #main-window {
 	min-width: max(var(--width-of-fixed-components) + $min-width-items-pane, $min-width-tabs-deck);
 	min-height: 300px;
+	background: var(--color-background);
 }
 
 #main-window.stacked {
@@ -23,6 +26,7 @@
 	min-width: 0;
 	min-height: 0;
 	flex-direction: column;
+	background: var(--color-background);
 }
 
 #zotero-pane-stack > hbox {
@@ -34,15 +38,18 @@
 }
 
 #zotero-pane-overlay {
-	background: rgba(0,0,0,.3);
+	background: rgba(0, 0, 0, 0.4); // Slightly darker overlay
+	backdrop-filter: blur(2px); // Modern blur effect
 }
 
 #zotero-pane-progress-box {
 	background: var(--color-sidepane);
-	border-radius: 5px;
-	border: var(--color-panedivider);
-	height: 30px;
-	width: 300px;
+	border-radius: $border-radius-medium; // Modern radius
+	border: 1px solid var(--color-border);
+	box-shadow: $shadow-lg; // Add depth
+	height: 36px; // Slightly taller
+	width: 320px; // Slightly wider
+	padding: $space-xs;
 }
 
 #zotero-pane-progressmeter-container {
