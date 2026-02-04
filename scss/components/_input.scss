@@ -1,15 +1,53 @@
+// Modern input styling inspired by EndNote 25
 input {
+	transition: all $transition-base ease;
+	
+	&:not([type="checkbox"]):not([type="radio"]) {
+		border-radius: $border-radius-base;
+		padding: $space-xs $space-sm;
+		border: 1px solid var(--color-border);
+		background: var(--color-background);
+		color: var(--fill-primary);
+		
+		&:focus {
+			outline: none;
+			border-color: var(--accent-blue);
+			box-shadow: 0 0 0 3px var(--accent-blue10);
+		}
+		
+		&:hover:not(:focus):not([disabled]) {
+			border-color: var(--accent-blue30);
+		}
+		
+		&[disabled] {
+			background: var(--color-sidepane);
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+	
 	@media (-moz-platform: linux) {
-		// fx140 form element styling fix
+		// fx140 form element styling fix with modern design
 		&:not([type="checkbox"]) {
 			appearance: none;
 		}
-		border-radius: 5px;
-		padding: .3em .5em;
-		border: 1px solid ThreeDShadow;
+		border-radius: $border-radius-base;
+		padding: $space-xs $space-sm; // Using spacing variables
+		border: 1px solid var(--color-border);
 		
 		&[type="button"] {
-			padding: .3em 1.5em;
+			padding: $space-xs $space-lg; // Using spacing variables
 		}
+	}
+}
+
+// Modern checkbox and radio button styling
+input[type="checkbox"],
+input[type="radio"] {
+	cursor: pointer;
+	transition: all $transition-fast ease;
+	
+	&:hover:not([disabled]) {
+		transform: scale(1.05);
 	}
 }

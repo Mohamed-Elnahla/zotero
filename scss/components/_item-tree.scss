@@ -14,7 +14,7 @@
 
 #zotero-items-tree {
 	.virtualized-table-body, .drag-image-container {
-		padding: 4px 8px 8px;
+		padding: $space-xs $space-sm $space-sm; // Modern spacing
 	}
 
 	.virtualized-table-body {
@@ -22,9 +22,11 @@
 	}
 
 	.virtualized-table-header {
-		padding-inline-start: 8px;
-		padding-inline-end: calc(8px + var(--scrollbar-width, 0px));
+		padding-inline-start: $space-sm;
+		padding-inline-end: calc($space-sm + var(--scrollbar-width, 0px));
 		box-sizing: border-box;
+		background: var(--color-background);
+		border-bottom: 1px solid var(--color-border);
 
 		.cell.hasAttachment,
 		.cell.numNotes {
@@ -36,18 +38,19 @@
 			&::before {
 				content: "";
 				display: inline-block;
-				width: 8px;
+				width: $space-sm;
 				height: 100%;
 				background: transparent;
 				position: absolute;
-				inset-inline-start: -8px;
+				inset-inline-start: -$space-sm;
+				transition: background $transition-fast ease;
 				
 				@include state(".first-column:hover") {
-					background: var(--material-mix-quinary);
+					background: var(--color-sidepane);
 				}
 				
 				@include state(".first-column.dragging") {
-					background: var(--material-mix-quarternary);
+					background: var(--accent-blue10);
 				}
 			}
 		}
@@ -56,18 +59,19 @@
 			&::after {
 				content: "";
 				display: inline-block;
-				width: calc(var(--scrollbar-width, 0px) + 8px);
+				width: calc(var(--scrollbar-width, 0px) + $space-sm);
 				height: 100%;
 				background: transparent;
 				position: absolute;
-				inset-inline-end: calc(-1 * var(--scrollbar-width, 0px) - 8px);
+				inset-inline-end: calc(-1 * var(--scrollbar-width, 0px) - $space-sm);
+				transition: background $transition-fast ease;
 		
 				@include state(".cell:hover") {
-					background: var(--material-mix-quinary);
+					background: var(--color-sidepane);
 				}
 
 				@include state(".cell.dragging") {
-					background: var(--material-mix-quarternary);
+					background: var(--accent-blue10);
 				}
 			}
 		}
@@ -75,25 +79,38 @@
 	
 	.virtualized-table, .drag-image-container {
 		.row {
+			border-radius: $border-radius-base; // Modern rounded corners
+			transition: all $transition-fast ease;
+			margin-bottom: $space-min; // Spacing between rows for card effect
+			
+			&:hover:not(.selected) {
+				background-color: var(--color-sidepane);
+				box-shadow: $shadow-xs; // Subtle hover effect
+				transform: translateX(2px); // Slight shift on hover
+			}
+			
 			&.odd:not(.selected) {
-				background-color: var(--material-stripe);
+				background-color: var(--color-background);
 			}
 
 			&.even:not(.selected) {
-				background-color: var(--material-background);
+				background-color: var(--color-stripe);
 			}
 
 			&.selected {
-				border-radius: 0;
+				background-color: var(--accent-blue10);
+				border: 1px solid var(--accent-blue30);
+				box-shadow: $shadow-sm;
+				border-radius: $border-radius-base;
 
 				&.first-selected {
-					border-top-left-radius: 5px;
-					border-top-right-radius: 5px;
+					border-top-left-radius: $border-radius-base;
+					border-top-right-radius: $border-radius-base;
 				}
 
 				&.last-selected {
-					border-bottom-left-radius: 5px;
-					border-bottom-right-radius: 5px;
+					border-bottom-left-radius: $border-radius-base;
+					border-bottom-right-radius: $border-radius-base;
 				}
 			}
 			

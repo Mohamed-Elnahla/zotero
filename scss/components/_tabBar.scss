@@ -2,9 +2,10 @@
 	// These variables can be overridden in platform styles to set platform-specific safe areas
 	--safe-area-start: 0;
 	--safe-area-end: 0;
-	--tab-border: .5px solid var(--tab-border);
+	--tab-border: 1px solid var(--color-border);
 
-	background: var(--material-tabbar);
+	background: var(--color-tabbar);
+	box-shadow: $shadow-xs; // Add subtle depth
 	-moz-window-dragging: drag;
 	min-height: var(--tab-min-height);
 	flex: 1;
@@ -36,7 +37,7 @@
 }
 
 #zotero-tabs-toolbar {
-	background: var(--material-tabbar);
+	background: var(--color-tabbar);
 }
 
 .tab-bar-inner-container {
@@ -61,9 +62,10 @@
 			width: auto;
 			padding: 0;
 			border: 0;
-			height: 28px;
-			border-radius: 5px;
+			height: 32px; // Modern height
+			border-radius: $border-radius-base;
 			background: transparent;
+			transition: all $transition-fast ease;
 		}
 
 		.icon {
@@ -74,7 +76,8 @@
 		&.active {
 			button {
 				&:hover {
-					background-color: var(--fill-quinary);
+					background-color: var(--color-sidepane);
+					box-shadow: $shadow-xs;
 				}
 			
 				&:active {
@@ -146,13 +149,13 @@
 	overflow: hidden;
 	left: 0;
 	right: 0;
-	padding: 4px 1px;
-	column-gap: 4px;
+	padding: $space-xs 1px;
+	column-gap: $space-xs;
 	-moz-window-dragging: drag;
 	scroll-padding: 2px; // ensures a tab is scrolled into view without cutoff borders
 
 	.pinned-tabs & {
-		padding: 4px 0;
+		padding: $space-xs 0;
 	}
 }
 
@@ -164,37 +167,41 @@
 	color: var(--fill-primary);
 	text-align: center;
 	min-width: 100px;
-	height: 28px;
+	height: 32px; // Slightly taller for modern look
 	line-height: 16px;
 	padding-inline-end: 22px;
-	padding-inline-start: 6px;
+	padding-inline-start: $space-sm;
 	display: flex;
 	align-items: center;
-	border-radius: 5px;
-	transition: background-color 0.1s ease-out;
+	border-radius: $border-radius-base; // Modern radius
+	transition: all $transition-fast ease; // Smooth transition
 	-moz-window-dragging: no-drag;
 
 	@include inactive-opacity;
 
 	&.selected {
-		background: var(--material-button);
-		box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
+		background: var(--color-background);
+		box-shadow: $shadow-sm; // Modern shadow
+		border: 1px solid var(--color-border);
 	}
 
 	&.dragging {
 		z-index: 1;
+		box-shadow: $shadow-md; // More prominent shadow while dragging
 	}
 	
 	&:not(:last-child) {
-		border-inline-end: var(--tab-border);
+		border-inline-end: 1px solid var(--color-border);
 	}
 
 	&:not(.selected):hover {
-		background-color: var(--fill-quinary);
+		background-color: var(--color-sidepane);
+		box-shadow: $shadow-xs;
+		transform: translateY(-1px); // Subtle lift effect
 	}
 
 	&:first-child {
-		padding: 6px; // no 22px padding for X button because pinned tab cannot be closed
+		padding: $space-xs; // no 22px padding for X button because pinned tab cannot be closed
 
 		.tab-close {
 			display: none;

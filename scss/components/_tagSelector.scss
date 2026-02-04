@@ -74,7 +74,7 @@
 .tag-selector-actions {
 	appearance: none;
 	flex-shrink: 0;
-	border-radius: 5px;
+	border-radius: $border-radius-base; // Modern radius
 	margin: 0;
 	-moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
 	background-color: transparent;
@@ -82,15 +82,17 @@
 	border: 0;
 	display: block;
 	flex: 0 1;
-	padding: 3px 4px;
+	padding: $space-min $space-xs;
 	white-space: nowrap;
+	transition: all $transition-fast ease;
 
 	&:hover {
-		background-color: var(--fill-quinary);
+		background-color: var(--color-sidepane);
+		box-shadow: $shadow-xs;
 	}
 	
 	&:active, &[selected] {
-		background-color: var(--fill-quarternary);
+		background-color: var(--accent-blue10);
 	}
 
 	@include focus-ring;
@@ -101,33 +103,38 @@
 }
 
 .tag-selector-item {
-	border-radius: 4px;
+	border-radius: $border-radius-base; // Modern rounded corners
 	cursor: pointer;
 	font-size: $font-size-small;
 	line-height: 1.272727273;
 	overflow: hidden;
-	padding: 1px 4px;
+	padding: $space-min $space-xs;
 	text-overflow: ellipsis;
 	white-space: pre;
 	box-sizing: border-box;
 	color: var(--fill-primary);
+	transition: all $transition-fast ease;
 
 	@include comfortable {
-		padding: 2px 4px;
+		padding: $space-xs $space-sm;
 	}
 
 	@include focus-ring(true);
 
 	&:hover {
-		background-color: var(--fill-quinary);
+		background-color: var(--color-sidepane);
+		transform: translateX(2px); // Slight shift on hover
+		box-shadow: $shadow-xs;
 	}
 
 	&.selected {
 		color: var(--color-background);
-		background-color: var(--fill-secondary);
+		background-color: var(--accent-blue);
+		box-shadow: $shadow-sm;
 
 		&:hover {
-			opacity: .75;
+			opacity: .85;
+			transform: translateX(2px);
 		}
 	}
 
@@ -148,13 +155,14 @@
 			&::before {
 				content: " ";
 				display: inline-block;
-				width: 0.636363636em; // 7px (+ 1px border = 8px)
-				height: 0.636363636em;
-				margin-right: .272727273em;
-				border-radius: 50%;
-				background-color: currentcolor; // fallback for non-standard colors
-				vertical-align: -0.363636364em; // -4px
+				width: 0.7em; // Slightly larger indicator
+				height: 0.7em;
+				margin-right: .4em;
+				border-radius: $border-radius-base; // Modern rounded square instead of circle
+				background-color: currentcolor;
+				vertical-align: -0.3em;
 				border: var(--material-border-transparent);
+				box-shadow: $shadow-xs; // Add depth to color indicator
 
 				@include state('.tag-selector-item.selected') {
 					border-color: var(--color-background);

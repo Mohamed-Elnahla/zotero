@@ -1,5 +1,5 @@
 //
-// Button
+// Button - Modern design inspired by EndNote 25
 // --------------------------------------------------
 
 .btn {
@@ -11,10 +11,51 @@
 	color: inherit;
 	text-align: center;
 	-moz-appearance: none;
+	border-radius: $border-radius-base;
+	transition: all $transition-base ease;
+	
+	// Modern button shadow for depth
+	&:not([disabled]):not(.disabled) {
+		box-shadow: $shadow-xs;
+		
+		&:hover {
+			box-shadow: $shadow-sm;
+			transform: translateY(-1px);
+		}
+		
+		&:active {
+			box-shadow: $shadow-xs;
+			transform: translateY(0);
+		}
+	}
 
 	&[disabled],
 	&.disabled {
 		opacity: $btn-disabled-opacity;
+		cursor: not-allowed;
+	}
+}
+
+// Primary button styling
+.btn-primary {
+	background: var(--accent-blue);
+	color: var(--accent-white);
+	border: 1px solid transparent;
+	
+	&:not([disabled]):not(.disabled):hover {
+		background: var(--accent-azure);
+	}
+}
+
+// Secondary button styling
+.btn-secondary {
+	background: var(--color-button);
+	color: var(--fill-primary);
+	border: 1px solid var(--color-border);
+	
+	&:not([disabled]):not(.disabled):hover {
+		background: var(--color-sidepane);
+		border-color: var(--accent-blue30);
 	}
 }
 
@@ -32,17 +73,25 @@
 }
 
 button {
+	border-radius: $border-radius-base;
+	
 	@media (-moz-platform: macos) {
 		// Prevent ugly non-native button styles on macOS
-		max-height: 25px;
+		max-height: 28px;
 		margin: 0 -2px -1px;
 	}
 	
 	@media (-moz-platform: linux) {
-		// fx140 form element styling fix
+		// fx140 form element styling fix with modern radius
 		appearance: none;
-		border-radius: 5px;
-		border: 1px solid ThreeDShadow;
-		padding: 0.3em 1.5em;
+		border-radius: $border-radius-base;
+		border: 1px solid var(--color-border);
+		padding: 0.4em 1.5em;
+		transition: all $transition-base ease;
+		
+		&:hover:not([disabled]) {
+			border-color: var(--accent-blue30);
+			box-shadow: $shadow-sm;
+		}
 	}
 }
