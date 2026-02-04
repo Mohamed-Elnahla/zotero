@@ -17,7 +17,8 @@
 		flex: 1;
 		overflow: hidden;
 		position: relative;
-		background: var(--material-background);
+		background: var(--color-background);
+		border-radius: $border-radius-base; // Modern rounded corners
 	}
 }
 
@@ -43,16 +44,17 @@
 		// NOTE: To avoid the complexities of dealing with padding in the
 		// flexbox model, `.cell` padding must be identical in the header and
 		// body. See #5198, #5162.
-		padding: 0 8px; 
+		padding: 0 $space-sm; // Modern spacing
 		min-width: 30px;
 		cursor: default;
 		white-space: nowrap;
 		flex-grow: 1;
 		box-sizing: border-box;
+		transition: background $transition-fast ease; // Smooth transitions
 
 		&.label {
 			padding-inline-start: 0;
-			padding-inline-end: 4px;
+			padding-inline-end: $space-xs;
 		}
 
 		&.first-column {
@@ -171,7 +173,7 @@
 			margin-inline-end: 0 !important;
 			display: flex;
 			align-items: center;
-			transition: transform 0.125s ease;
+			transition: transform $transition-base ease; // Smooth animation
 			transform: rotate(-90deg);
 
 			&.open {
@@ -181,7 +183,7 @@
 			&.icon-css {
 				width: 16px;
 				height: 16px;
-				padding: 4px;
+				padding: $space-xs;
 				box-sizing: border-box;
 				background: url("chrome://zotero/skin/8/universal/chevron-8.svg") content-box no-repeat;
 				-moz-context-properties: fill, fill-opacity;
@@ -240,12 +242,13 @@
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
-	background: var(--material-background);
+	background: var(--color-sidepane); // Modern background
 	height: 1.83333333em; // 22px @ 12px font size
 	overflow: hidden;
-	border-bottom: 1px solid var(--material-border-quarternary);
-	padding-inline: 8px;
+	border-bottom: 1px solid var(--color-border);
+	padding-inline: $space-sm; // Modern spacing
 	box-sizing: border-box;
+	font-weight: 500; // Slightly bolder headers
 	padding-inline-end: calc(8px + var(--scrollbar-width, 0px));
 
 	@include comfortable {
